@@ -1,0 +1,24 @@
+<div class="item" data-product-id="{{ product_id }}" data-variation-id="{{ variation_id }}">
+  <div>
+    <div class="item-header">
+      <a href="/product/{{ product_id }}" >
+        {% if image_img|render is not empty %}<div class="img-holder"><img src="{{image_img}}" alt="{{ title }}" title="{{ title }}" /></div>{% endif %}
+        <div class="title-holder">{{ title }}</div>
+      </a>
+      <button aria-label="{{ label_delete }}" title="{{ label_delete }}" class="remove-all" data-remove-item>
+        <i class="fas fa-trash-alt"></i>
+      </button>
+    </div>
+
+    <div class="item-body">
+      <div class="item-update">
+        <div>
+          <button class="remove-one" data-increase-item-quantity="-1" aria-label="{{ label_remove_one }}" title="{{ label_remove_one }}"><i class="fas fa-minus"></i></button>
+          <input name="quantity" type="number" min="0" aria-label="{{ label_quantity }}" value="{{ quantity|number_format(0) }}" data-item-quantity />
+          <button class="add-one" data-increase-item-quantity="1" aria-label="{{ label_add_one }}" title="{{ label_add_one }}"><i class="fas fa-plus"></i></button>
+        </div>
+      </div>
+      <strong class="item-price">{{ price }}</strong>
+    </div>
+  </div>
+</div>

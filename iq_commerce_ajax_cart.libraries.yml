@@ -1,0 +1,13 @@
+ajax-cart:
+  css:
+    theme:
+      resources/css/ajax-cart.css: {}
+  js:
+    resources/js/ajax-cart.js:  {}
+    resources/js/init.js: {}
+  dependencies:
+    - core/jquery
+    - core/once
+    - core/drupal
+    - core/drupal.ajax
+    - ui_patterns/button.button

@@ -1,0 +1,27 @@
+<div class="iq-commerce-mini-cart">
+  <div class="iq-commerce-mini-cart-toggle">
+    <a class="button" href="{{ link }}" title="{{ label }}">
+      <span class="icon"><i class="fas fa-shopping-cart"></i></span>
+      <span class="count">{{ count }}</span>
+    </a>
+  </div>
+  <div class="iq-commerce-mini-cart-content loading" data-cart-content-holder>
+    <div class="iq-commerce-mini-cart-header">
+      <span class="title">{{label}}</span>
+    </div>
+    <div class="iq-commerce-mini-cart-body" data-mini-cart-content data-label-empty="{{label_cart_empty}}"><p class="empty">{{label_cart_empty}}</p></div>
+    <div class="iq-commerce-mini-cart-footer" >
+      <div class="total">
+        <span class="total-label" >{{ label_total }}</span>
+        <span class="total-value" data-total-value></span>
+      </div>
+      {{ pattern('button', {
+        href: link,
+        title: link_title,
+        text: link_title,
+        alignment: "left",
+        button_icon: "fas fa-shopping-cart"
+      }) }}
+    </div>
+  </div>
+</div>

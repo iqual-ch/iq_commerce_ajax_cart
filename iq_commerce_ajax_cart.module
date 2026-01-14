@@ -1,0 +1,23 @@
+<?php
+
+/**
+ * @file
+ * Contains iq_commerce_ajax_cart.module.
+ */
+
+/**
+ * Implements hook_theme().
+ */
+function iq_commerce_ajax_cart_theme($existing, $type, $theme, $path) {
+  return [
+    'iq_commerce_ajax_cart_block' => [
+      'variables' => [
+        'label' => NULL,
+        'link' => NULL,
+        'link_title' => NULL,
+        'label_cart_empty' => NULL,
+        'label_total' => NULL,
+      ],
+    ],
+  ];
+}

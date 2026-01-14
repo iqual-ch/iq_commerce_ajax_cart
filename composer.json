@@ -1,0 +1,20 @@
+{
+  "name": "iqual/iq_commerce_ajax_cart",
+  "description": "Provides ajax cart functionality for the Drupal Commerce",
+  "type": "drupal-custom-module",
+  "repositories": [ 
+    {
+      "type": "composer",
+      "url": "https://github.com/iqual-ch/iq_commerce_ajax_cart"
+    }
+  ],
+  "require": {
+    "php": "^8.1",
+    "drupal/core": "^10 || ^11",
+    "drupal/commerce": "^3.2",
+    "drupal/commerce_cart_api": "^1.9",
+    "drupal/commerce_combine_carts": "^1.1",
+    "iqual/iq_commerce": "^3.1",
+    "iqual/iq_progressive_decoupler": "^3.1"
+  }
+}

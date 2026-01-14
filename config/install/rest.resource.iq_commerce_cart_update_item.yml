@@ -1,0 +1,17 @@
+langcode: en
+status: true
+dependencies:
+  module:
+    - iq_commerce
+    - serialization
+    - user
+id: iq_commerce_cart_update_item
+plugin_id: iq_commerce_cart_update_item
+granularity: resource
+configuration:
+  methods:
+    - PATCH
+  formats:
+    - json
+  authentication:
+    - cookie

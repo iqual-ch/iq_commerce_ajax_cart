@@ -1,0 +1,1 @@
+# Ajax Cart for Iqual Commerce

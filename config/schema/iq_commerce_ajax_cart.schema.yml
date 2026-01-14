@@ -1,0 +1,16 @@
+block.settings.iq_commerce_ajax_cart_block:
+  type: block_settings
+  label: 'Ajax Cart Block'
+  mapping:
+    link:
+      type: label
+      label: 'Link Cart'
+    link_title:
+      type: label
+      label: 'Link Title'
+    label_total:
+      type: label
+      label: 'Label Total'
+    label_cart_empty:
+      type: label
+      label: 'Label Cart empty'

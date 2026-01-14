@@ -1,0 +1,51 @@
+iq-commerce-ajax-cart-item:
+  label: iq_commerce Ajax Cart item
+  description: Ajax Cart item
+  pagedesigner: 0
+  fields:
+    title:
+      type: text
+      label: Title
+      description: Title of the item
+    image_img:
+      type: image
+      label: Product image
+    product_id:
+      type: text
+      label: Product ID
+      description: Product ID of the item
+    variation_id:
+      type: text
+      label: Variation ID
+      description: Variation ID of the item
+    quantity:
+      type: text
+      label: Quantity
+      description: Quantity of the item
+    price:
+      type: text
+      label: Price
+      description: Price of the item
+    label_delete:
+      type: text
+      label: Label delete item
+      description: Label delete item
+    label_remove_one:
+      type: text
+      label: Label remove one item
+      description: Label remove one item
+    label_add_one:
+      type: text
+      label: Label add one item
+      description: Label add one item
+    label_quantity:
+      type: text
+      label: Label quantity
+      description: Label quantity
+
+  libraries:
+    - ajax-cart-item:
+        js:
+          ajax-cart-item.js: {}
+      dependencies:
+        - core/drupal
