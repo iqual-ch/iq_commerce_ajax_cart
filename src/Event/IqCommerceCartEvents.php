@@ -1,6 +1,6 @@
 <?php
 
-namespace Drupal\iq_commerce\Event;
+namespace Drupal\iq_commerce_ajax_cart\Event;
 
 /**
  * Defines events for the iq_commerce module.

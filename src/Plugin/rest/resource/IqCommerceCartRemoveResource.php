@@ -1,15 +1,15 @@
 <?php
 
-namespace Drupal\iq_commerce\Plugin\rest\resource;
+namespace Drupal\iq_commerce_ajax_cart\Plugin\rest\resource;
 
 use Drupal\commerce_cart\CartManagerInterface;
 use Drupal\commerce_cart\CartProviderInterface;
 use Drupal\commerce_cart_api\Plugin\rest\resource\CartRemoveItemResource;
 use Drupal\commerce_order\Entity\OrderInterface;
 use Drupal\commerce_order\Entity\OrderItemInterface;
-use Drupal\iq_commerce\Event\IqCommerceAfterCartRemoveItemEvent;
-use Drupal\iq_commerce\Event\IqCommerceBeforeCartRemoveItemEvent;
-use Drupal\iq_commerce\Event\IqCommerceCartEvents;
+use Drupal\iq_commerce_ajax_cart\Event\IqCommerceAfterCartRemoveItemEvent;
+use Drupal\iq_commerce_ajax_cart\Event\IqCommerceBeforeCartRemoveItemEvent;
+use Drupal\iq_commerce_ajax_cart\Event\IqCommerceCartEvents;
 use Psr\Log\LoggerInterface;
 use Symfony\Component\DependencyInjection\ContainerInterface;
 use Symfony\Component\EventDispatcher\EventDispatcherInterface;
@@ -95,11 +95,11 @@ class IqCommerceCartRemoveResource extends CartRemoveItemResource {
    *   The response.
    */
   public function delete(OrderInterface $commerce_order, OrderItemInterface $commerce_order_item) {
-    /** @var \Drupal\iq_commerce\Event\IqCommerceBeforeCartRemoveItemEvent $before_event */
+    /** @var \Drupal\iq_commerce_ajax_cart\Event\IqCommerceBeforeCartRemoveItemEvent $before_event */
     $before_event = new IqCommerceBeforeCartRemoveItemEvent($commerce_order, $commerce_order_item);
     $this->eventDispatcher->dispatch($before_event, IqCommerceCartEvents::BEFORE_CART_ENTITY_REMOVE_ITEM);
     $response = parent::delete($commerce_order, $commerce_order_item);
-    /** @var \Drupal\iq_commerce\Event\IqCommerceAfterCartRemoveItemEvent $before_event */
+    /** @var \Drupal\iq_commerce_ajax_cart\Event\IqCommerceAfterCartRemoveItemEvent $after_event */
     $after_event = new IqCommerceAfterCartRemoveItemEvent($response);
     $this->eventDispatcher->dispatch($after_event, IqCommerceCartEvents::AFTER_CART_ENTITY_REMOVE_ITEM);
     $response = $after_event->getResponse();

@@ -1,0 +1,9 @@
+iq_commerce_ajax_cart.settings:
+  path: '/admin/commerce/config/iq-commerce/ajax-cart-settings'
+  defaults:
+    _form: '\Drupal\iq_commerce_ajax_cart\Form\IqCommerceAjaxCartSettingsForm'
+    _title: 'Iq Commerce Ajax Cart Settings'
+  requirements:
+    _permission: 'administer iq_commerce_ajax_cart settings'
+  options:
+    _admin_route: TRUE

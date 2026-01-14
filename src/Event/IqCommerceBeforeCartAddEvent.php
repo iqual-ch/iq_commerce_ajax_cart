@@ -1,13 +1,13 @@
 <?php
 
-namespace Drupal\iq_commerce\Event;
+namespace Drupal\iq_commerce_ajax_cart\Event;
 
 use Symfony\Contracts\EventDispatcher\Event;
 
 /**
  * Defines the before cart add event.
  *
- * @see \Drupal\iq_commerce\Event\CartEvents
+ * @see \Drupal\iq_commerce_ajax_cart\Event\CartEvents
  */
 class IqCommerceBeforeCartAddEvent extends Event {
 

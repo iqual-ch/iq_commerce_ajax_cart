@@ -1,6 +1,6 @@
 <?php
 
-namespace Drupal\iq_commerce\Event;
+namespace Drupal\iq_commerce_ajax_cart\Event;
 
 use Drupal\rest\ModifiedResourceResponse;
 use Drupal\rest\ResourceResponseInterface;
@@ -9,7 +9,7 @@ use Symfony\Contracts\EventDispatcher\Event;
 /**
  * Defines the cart after add event.
  *
- * @see \Drupal\iq_commerce\Event\CartEvents
+ * @see \Drupal\iq_commerce_ajax_cart\Event\CartEvents
  */
 class IqCommerceAfterCartAddEvent extends Event {
 

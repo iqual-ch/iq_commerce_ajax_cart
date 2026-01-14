@@ -1,0 +1,3 @@
+administer iq_commerce_ajax_cart settings:
+  title: 'Administer IQ Commerce Ajax Cart Settings'
+  restrict access: true

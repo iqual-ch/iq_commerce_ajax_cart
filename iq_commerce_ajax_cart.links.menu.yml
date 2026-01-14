@@ -1,0 +1,5 @@
+iq_commerce_ajax_cart.settings:
+  title: 'IQ Commerce Ajax Cart settings'
+  route_name: iq_commerce_ajax_cart.settings
+  parent: iq_commerce.configuration
+  weight: 20

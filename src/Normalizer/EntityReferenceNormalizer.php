@@ -1,12 +1,12 @@
 <?php
 
-namespace Drupal\iq_commerce\Normalizer;
+namespace Drupal\iq_commerce_ajax_cart\Normalizer;
 
 use Drupal\commerce_cart_api\Normalizer\EntityReferenceNormalizer as EntityReferenceNormalizerBase;
 use Drupal\Core\Entity\EntityRepositoryInterface;
 use Drupal\Core\File\FileUrlGeneratorInterface;
 use Drupal\Core\Routing\RouteMatchInterface;
-use Drupal\iq_commerce\Form\IqCommerceProductSettingsForm;
+use Drupal\iq_commerce_ajax_cart\Form\IqCommerceAjaxCartSettingsForm;
 
 /**
  * Class EntityReferenceNormalizer.
@@ -14,7 +14,7 @@ use Drupal\iq_commerce\Form\IqCommerceProductSettingsForm;
  * Extends the EntityReferenceNormalizer from the commerce_cart_api module to
  *   attach the products and images as entities to the serialized response.
  *
- * @package Drupal\iq_commerce\Normalizer
+ * @package Drupal\iq_commerce_ajax_cart\Normalizer
  */
 class EntityReferenceNormalizer extends EntityReferenceNormalizerBase {
 
@@ -29,7 +29,7 @@ class EntityReferenceNormalizer extends EntityReferenceNormalizerBase {
    * {@inheritdoc}
    */
   public function __construct(EntityRepositoryInterface $entity_repository, RouteMatchInterface $route_match, array $commerce_cart_api, FileUrlGeneratorInterface $file_url_generator) {
-    $config = IqCommerceProductSettingsForm::getIqCommerceProductSettings();
+    $config = IqCommerceAjaxCartSettingsForm::getIqCommerceAjaxCartSettings();
     if (!empty($config['normalize_fields'])) {
       foreach ($config['normalize_fields'] as $field) {
         $commerce_cart_api['normalized_entity_references'][] = $field;

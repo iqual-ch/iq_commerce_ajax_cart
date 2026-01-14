@@ -1,6 +1,6 @@
 <?php
 
-namespace Drupal\iq_commerce\Plugin\rest\resource;
+namespace Drupal\iq_commerce_ajax_cart\Plugin\rest\resource;
 
 use Drupal\commerce_cart\CartManagerInterface;
 use Drupal\commerce_cart\CartProviderInterface;
@@ -11,9 +11,9 @@ use Drupal\commerce_store\CurrentStoreInterface;
 use Drupal\Core\Entity\EntityRepositoryInterface;
 use Drupal\Core\Entity\EntityTypeManagerInterface;
 use Drupal\Core\Session\AccountInterface;
-use Drupal\iq_commerce\Event\IqCommerceAfterCartAddEvent;
-use Drupal\iq_commerce\Event\IqCommerceBeforeCartAddEvent;
-use Drupal\iq_commerce\Event\IqCommerceCartEvents;
+use Drupal\iq_commerce_ajax_cart\Event\IqCommerceAfterCartAddEvent;
+use Drupal\iq_commerce_ajax_cart\Event\IqCommerceBeforeCartAddEvent;
+use Drupal\iq_commerce_ajax_cart\Event\IqCommerceCartEvents;
 use Psr\Log\LoggerInterface;
 use Symfony\Component\DependencyInjection\ContainerInterface;
 use Symfony\Component\EventDispatcher\EventDispatcherInterface;
@@ -150,7 +150,7 @@ class IqCommerceCartAddResource extends CartAddResource {
       }
     }
 
-    /** @var \Drupal\iq_commerce\Event\IqCommerceBeforeCartAddEvent $before_event */
+    /** @var \Drupal\iq_commerce_ajax_cart\Event\IqCommerceBeforeCartAddEvent $before_event */
     $before_event = new IqCommerceBeforeCartAddEvent($data);
     $this->eventDispatcher->dispatch($before_event, IqCommerceCartEvents::BEFORE_CART_ENTITY_ADD);
     $data = $before_event->getBody();
@@ -168,7 +168,7 @@ class IqCommerceCartAddResource extends CartAddResource {
     $order_item->save();
 
     $additional_data = $before_event->getAdditionalData();
-    /** @var \Drupal\iq_commerce\Event\IqCommerceAfterCartAddEvent $before_event */
+    /** @var \Drupal\iq_commerce_ajax_cart\Event\IqCommerceAfterCartAddEvent $after_event */
     $after_event = new IqCommerceAfterCartAddEvent($response, $additional_data);
     $this->eventDispatcher->dispatch($after_event, IqCommerceCartEvents::AFTER_CART_ENTITY_ADD);
     $response = $after_event->getResponseWithAdditionalData();

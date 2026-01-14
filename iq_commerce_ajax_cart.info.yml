@@ -8,3 +8,4 @@ dependencies:
   - commerce_cart_api:commerce_cart_api
   - iq_progressive_decoupler:iq_progressive_decoupler
   - iq_commerce:iq_commerce
+  - ui_patterns:ui_patterns

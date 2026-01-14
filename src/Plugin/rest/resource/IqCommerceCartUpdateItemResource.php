@@ -1,6 +1,6 @@
 <?php
 
-namespace Drupal\iq_commerce\Plugin\rest\resource;
+namespace Drupal\iq_commerce_ajax_cart\Plugin\rest\resource;
 
 use Drupal\commerce_cart\CartManagerInterface;
 use Drupal\commerce_cart\CartProviderInterface;
@@ -8,9 +8,9 @@ use Drupal\commerce_cart_api\Plugin\rest\resource\CartUpdateItemResource;
 use Drupal\commerce_order\Entity\OrderInterface;
 use Drupal\commerce_order\Entity\OrderItemInterface;
 use Drupal\Core\Entity\EntityTypeManagerInterface;
-use Drupal\iq_commerce\Event\IqCommerceAfterCartUpdateItemEvent;
-use Drupal\iq_commerce\Event\IqCommerceBeforeCartUpdateItemEvent;
-use Drupal\iq_commerce\Event\IqCommerceCartEvents;
+use Drupal\iq_commerce_ajax_cart\Event\IqCommerceAfterCartUpdateItemEvent;
+use Drupal\iq_commerce_ajax_cart\Event\IqCommerceBeforeCartUpdateItemEvent;
+use Drupal\iq_commerce_ajax_cart\Event\IqCommerceCartEvents;
 use Psr\Log\LoggerInterface;
 use Symfony\Component\DependencyInjection\ContainerInterface;
 use Symfony\Component\EventDispatcher\EventDispatcherInterface;
@@ -107,11 +107,11 @@ class IqCommerceCartUpdateItemResource extends CartUpdateItemResource {
       throw new UnprocessableEntityHttpException('Quantity must be positive value');
     }
 
-    /** @var \Drupal\iq_commerce\Event\IqCommerceBeforeCartUpdateItemEvent $before_event */
+    /** @var \Drupal\iq_commerce_ajax_cart\Event\IqCommerceBeforeCartUpdateItemEvent $before_event */
     $before_event = new IqCommerceBeforeCartUpdateItemEvent($commerce_order, $commerce_order_item, $unserialized);
     $this->eventDispatcher->dispatch($before_event, IqCommerceCartEvents::BEFORE_CART_ENTITY_UPDATE_ITEM);
     $response = parent::patch($commerce_order, $commerce_order_item, $unserialized);
-    /** @var \Drupal\iq_commerce\Event\IqCommerceAfterCartUpdateItemEvent $before_event */
+    /** @var \Drupal\iq_commerce_ajax_cart\Event\IqCommerceAfterCartUpdateItemEvent $before_event */
     $after_event = new IqCommerceAfterCartUpdateItemEvent($response);
     $this->eventDispatcher->dispatch($after_event, IqCommerceCartEvents::AFTER_CART_ENTITY_UPDATE_ITEM);
     $response = $after_event->getResponse();

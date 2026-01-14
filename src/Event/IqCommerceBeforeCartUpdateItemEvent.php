@@ -1,11 +1,11 @@
 <?php
 
-namespace Drupal\iq_commerce\Event;
+namespace Drupal\iq_commerce_ajax_cart\Event;
 
 /**
  * Defines the before cart update item event.
  *
- * @see \Drupal\iq_commerce\Event\CartEvents
+ * @see \Drupal\iq_commerce_ajax_cart\Event\CartEvents
  */
 class IqCommerceBeforeCartUpdateItemEvent extends IqCommerceBeforeCartRemoveItemEvent {
 
@@ -15,7 +15,7 @@ class IqCommerceBeforeCartUpdateItemEvent extends IqCommerceBeforeCartRemoveItem
    * @param \Drupal\commerce_order\Entity\OrderInterface $commerce_order
    *   The order that is being edited.
    * @param \Drupal\commerce_order\Entity\OrderItemInterface $commerce_order_item
-   *   The order item that is being removed.
+   *   The order item that is being updated.
    * @param mixed $unserialized
    *   The unserialized data from the request body.
    */
