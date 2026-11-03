@@ -12,7 +12,14 @@
     args.item.find('[data-item-quantity]').change(function(){
       var amount = parseInt($(this).val());
       Drupal.behaviors.iq_commerce_ajax_cart.getCsrfToken(function (csrfToken) {
-        Drupal.behaviors.iq_commerce_ajax_cart.updateItem(csrfToken, args.order.order_id, args.order.order_item_id, amount );
+        // The update resource only accepts positive quantities, so remove
+        // the item when the quantity drops below 1.
+        if (isNaN(amount) || amount < 1) {
+          Drupal.behaviors.iq_commerce_ajax_cart.removeFromCart(csrfToken, args.order.order_id, args.order.order_item_id);
+        }
+        else {
+          Drupal.behaviors.iq_commerce_ajax_cart.updateItem(csrfToken, args.order.order_id, args.order.order_item_id, amount);
+        }
       });
     });
 

@@ -61,7 +61,9 @@
             'Content-Type': 'application/json',
             'X-CSRF-Token': csrfToken
           },
-          data: JSON.stringify(orderData),
+          // Only send the quantity: the update resource rejects any other
+          // keys, e.g. the validation flags added by validateCartItem().
+          data: JSON.stringify({ quantity: orderData.quantity }),
           success: function (orderData) {
             $(document).trigger("iq-commerce-cart-update-after", [orderData]);
           }
